@@ -69,7 +69,7 @@ def index():  # put application's code here
     # requestapi = requests.get(url)
     # data = requestapi.json()
     # imagemjogo = data['results'][0]['background_image']
-
+#
     # for i in range(10):
     datajson = requestapi.json()['results']
     return render_template("index.html", datajson=datajson)
