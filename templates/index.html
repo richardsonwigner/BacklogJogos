@@ -14,7 +14,6 @@
 </head>
 <body>
 <div class="wrapper">
-
     <!-- HEADER -->
     <header>
         <div class="netflixLogo">
@@ -38,13 +37,14 @@
     <!-- END OF HEADER -->
 
     <!-- MAIN CONTAINER -->
+
     <section class="main-container">
         <div class="location" id="home">
-            <h1 id="home">Mais jogados</h1>
+            <h1 id="home">Mais Falados</h1>
             <div class="box">
-                {% for item in i %}
+                {% for jogo in datajson %}
                     <a href="">
-                        <img src="https://store-images.s-microsoft.com/image/apps.30459.13817182746640445.1152921504738442637.a405c13b-cd2b-4d17-8184-4957c880e4ee?mode=scale&q=100&h=310&w=200&background=%23FFFFFF"
+                        <img style="max-width: 250px; max-height: 250px" src="{{ jogo['background_image'] }}"
                              alt="">
                     </a>
                 {% endfor %}

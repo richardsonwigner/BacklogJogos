@@ -11,15 +11,12 @@ app.secret_key = 'secretKey'
 # gameName = 'Mega Man 6'
 # search = f'&search={gameName}'
 # url = f'https://api.rawg.io/api/games?key={apikey}{search}'
-# request = requests.get(url)
-# data = request.json()
+# requestapi = requests.get(url)
+# data = requestapi.json()
 # print(data['results'][0]['background_image'])
 
-# for i in range(50):
-#     datajson = request.json()['results'][i]['games']
-#    for item in datajson:
-#       i += 1
-#        print(item['name'])
+url = f'https://api.rawg.io/api/games?key={apikey}'
+requestapi = requests.get(url)
 
 
 user1 = User.User('1', 'user1', '123')
@@ -42,15 +39,19 @@ def autenticar():
               flash('Erro no login')
               return redirect('/')
 
-    # if user in usuarios:
-    #     if usuarios[user].senha == password_user:
-    #         session['usuario_logado'] = request.form['user']
-    #         return redirect('/index')
-
 @app.route('/index')
 def index():  # put application's code here
-    i = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
-    return render_template("index.html", i=i)
+    # gameName = 'Mega Man 6'
+    # search = f'&search={gameName}'
+    # url = f'https://api.rawg.io/api/games?key={apikey}{search}'
+    # requestapi = requests.get(url)
+    # data = requestapi.json()
+    #imagemjogo = data['results'][0]['background_image']
+
+    #for i in range(10):
+    datajson = requestapi.json()['results']
+    number = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    return render_template("index.html", i=number, datajson=datajson)
 
 
 if __name__ == '__main__':
