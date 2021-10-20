@@ -26,6 +26,9 @@ h1 {
     padding-top: 60px;
 }
 
+h1 .notas {
+}
+
 .wrapper {
     margin: 0;
     padding: 0;
@@ -72,6 +75,16 @@ header {
     padding: 0 30px 0 20px;
 }
 
+body .pesquisa {
+    background: #333;
+    border-radius: 4px;
+    border: none;
+    opacity: 1;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 25px;
+}
+
 .main-nav a {
     color: var(--light);
     text-decoration: none;
@@ -95,6 +108,47 @@ header {
 
 .sub-nav a:hover {
     color: var(--dark);
+}
+
+.adc-pesquisa {
+    grid-area: auto;
+
+}
+
+.adc-pesquisa a {
+    color: var(--light);
+    text-decoration: none;
+    margin: 5px;
+}
+
+.adc-pesquisa a:hover {
+    color: var(--dark);
+}
+
+#editNota {
+    background: #333;
+    border-radius: 2px;
+    margin-top: 10px;
+    border: none;
+    opacity: 1;
+    color: #fff;
+    line-height: 25px;
+}
+
+#btnEdit {
+    background-color: #dc1a28;
+    width: 200px;
+    height: 37.5px;
+    border-radius: 2px;
+    margin-top: 10px;
+    border: none;
+    opacity: 1;
+    color: #fff;
+    line-height: 25px;
+}
+
+#nota {
+    width: 196px;
 }
 
 
@@ -123,6 +177,11 @@ header {
 .box img {
     border-radius: 2px;
 }
+
+#divEdit {
+    padding-top:10px;
+}
+
 
 /* LINKS */
 .link {
