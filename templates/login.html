@@ -4,22 +4,35 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link href="/static/loginCss.css" rel="stylesheet" id="lay-css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
 </head>
-<body>
+<body  style="background-color:black;">
 
-<div class="login">
-    <h1 class="login__title">Sign In</h1>
-    <div class="login__group">
-        <input class="login__group__input" type="text" required="true"/>
-        <label class="login__group__label">Email or phone number</label>
+    <div class="login">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method='POST' action="{{ url_for('autenticar') }} ">
+        <h1 class="login__title">Sign In</h1>
+        <div class="login__group">
+            <input class="login__group__input" type="text" name="user" required="true"/>
+            <label class="login__group__label">Nome Usuário</label>
+        </div>
+        <div class="login__group">
+            <input class="login__group__input" type="password" name="password" required="true"/>
+            <label class="login__group__label">Senha</label>
+        </div>
+        <button class="login__sign-in" type="submit">Sign In</button>
+        <div class="login__secondary-cta"><a class="login__secondary-cta__text" href="#">Remember me</a><a
+                class="login__secondary-cta__text login__secondary-cta__text--need-help" href="#">Need help?</a></div>
+        </form>
     </div>
-    <div class="login__group">
-        <input class="login__group__input" type="password" required="true"/>
-        <label class="login__group__label">Password</label>
-    </div>
-    <button class="login__sign-in" type="button" onclick="window.location.href='/index.html'" >Sign In</button>
-    <div class="login__secondary-cta"><a class="login__secondary-cta__text" href="#">Remember me</a><a
-            class="login__secondary-cta__text login__secondary-cta__text--need-help" href="#">Need help?</a></div>
-</div>
+
 </body>
 </html>
