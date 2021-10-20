@@ -151,6 +151,14 @@ body .pesquisa {
     width: 196px;
 }
 
+#nomeJogo{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
 
 /* MAIN CONTIANER */
 .main-container {
@@ -181,7 +189,6 @@ body .pesquisa {
 #divEdit {
     padding-top:10px;
 }
-
 
 /* LINKS */
 .link {

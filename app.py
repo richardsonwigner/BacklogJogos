@@ -3,6 +3,8 @@ from Classes import User
 from flask import Flask, render_template, request, redirect, session, flash
 import requests
 
+from Classes.Jogo import Jogo
+
 app = Flask(__name__)
 
 apikey = 'f3463a88067a455892363f8ead0bd700'
@@ -23,6 +25,8 @@ user2 = User.User('2', 'user2', '123')
 
 ListUsers = [user1, user2]
 
+ListJogo = []
+
 
 @app.route('/')
 def login():  # put application's code here
@@ -41,6 +45,22 @@ def autenticar():
             return redirect('/')
 
 
+@app.route('/addJogo', methods=['POST', ])
+def addJogo():
+    name_jogo = request.form['nomeJogo']
+    nota_jogo = request.form['notaJogo']
+    search = f'&search={name_jogo}'
+    url = f'https://api.rawg.io/api/games?key={apikey}{search}'
+    requestapi = requests.get(url)
+    data = requestapi.json()
+    img_jogo = data['results'][0]['background_image']
+    name_jogo = data['results'][0]['name']
+
+    jogoEncontrado = Jogo(name_jogo, img_jogo, nota_jogo)
+    ListJogo.append(jogoEncontrado)
+    return redirect('/index')
+
+
 @app.route('/index')
 def index():  # put application's code here
     # gameName = 'Mega Man 6'
@@ -52,16 +72,15 @@ def index():  # put application's code here
 
     # for i in range(10):
     datajson = requestapi.json()['results']
-    number = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-    return render_template("index.html", i=number, datajson=datajson)
+    return render_template("index.html", datajson=datajson)
 
 
-@app.route('/editar.html')
+@app.route('/editar')
 def telaEditar():  # put application's code here
     return render_template("editar.html")
 
 
-@app.route('/adicionar.html')
+@app.route('/adicionar')
 def telaAdicionar():  # put application's code here
     return render_template("adicionar.html")
 
