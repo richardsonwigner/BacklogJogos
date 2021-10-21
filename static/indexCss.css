@@ -54,7 +54,6 @@ header {
     object-fit: cover;
     width: 100px;
     max-height: 100%;
-
     padding-left: 30px;
     padding-top: 0px;
 }
@@ -151,11 +150,17 @@ body .pesquisa {
     width: 196px;
 }
 
-#nomeJogo{
+#nomeJogo {
+    font-weight: bold;
     color: white;
 }
 
-a{
+#notaJogo {
+    font-weight: bold;
+    color: firebrick;
+}
+
+a {
     text-decoration: none;
 }
 
@@ -182,12 +187,19 @@ a{
     transform: scale(1.1);
 }
 
+#myBox:hover {
+    transition: transform .3s;
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
 .box img {
     border-radius: 2px;
 }
 
 #divEdit {
-    padding-top:10px;
+    padding-top: 10px;
 }
 
 /* LINKS */

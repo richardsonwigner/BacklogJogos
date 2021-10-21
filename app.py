@@ -25,7 +25,14 @@ user2 = User.User('2', 'user2', '123')
 
 ListUsers = [user1, user2]
 
-ListJogo = []
+jogo1 = Jogo('Mega Man 10(2010)', 'https://media.rawg.io/media/screenshots/b87/b876d9664840d7e2f53cf5c649476935.jpg',
+             '2')
+jogo2 = Jogo('Valorant', 'https://media.rawg.io/media/games/b11/b11127b9ee3c3701bd15b9af3286d20e.jpg', '4')
+jogo3 = Jogo('The Sims 4', 'https://media.rawg.io/media/games/e44/e445335e611b4ccf03af71fffcbd30a4.jpg', '10')
+jogo4 = Jogo('ARK: Survival Evolved', 'https://media.rawg.io/media/games/58a/58ac7f6569259dcc0b60b921869b19fc.jpg',
+             '10')
+
+ListJogo = [jogo1, jogo2, jogo3, jogo4]
 
 
 @app.route('/')
@@ -63,21 +70,27 @@ def addJogo():
 
 @app.route('/index')
 def index():  # put application's code here
-    # gameName = 'Mega Man 6'
-    # search = f'&search={gameName}'
-    # url = f'https://api.rawg.io/api/games?key={apikey}{search}'
-    # requestapi = requests.get(url)
-    # data = requestapi.json()
-    # imagemjogo = data['results'][0]['background_image']
-#
-    # for i in range(10):
     datajson = requestapi.json()['results']
-    return render_template("index.html", datajson=datajson)
+    return render_template("index.html", datajson=datajson, ListJogo=ListJogo)
 
 
-@app.route('/editar')
+@app.route('/editar', methods=['POST', ])
 def telaEditar():  # put application's code here
-    return render_template("editar.html")
+    name_jogo = request.form['nomeJogo']
+    for jogo in ListJogo:
+        if (name_jogo == jogo.nomeJogo):
+            return render_template("editar.html", jName=jogo.nomeJogo, jImg=jogo.imgJogo)
+
+
+@app.route('/editarJogo', methods=['POST', ])
+def editarJogo():  # put application's code here
+    name_jogo = request.form['nomeJogo']
+    nota_jogo = request.form['notaJogo']
+    for jogo in ListJogo:
+        if (name_jogo == jogo.nomeJogo):
+            jogo.notaJogo = nota_jogo
+            flash('Editado com sucesso!')
+            return redirect('/index')
 
 
 @app.route('/adicionar')

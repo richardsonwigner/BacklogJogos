@@ -38,12 +38,6 @@
         <nav class="main-nav">
             <a href="/index">Home</a>
         </nav>
-        <nav class="sub-nav">
-            <a><input class="pesquisa" type="text"/></a>
-            <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
-            <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-            <a href="/">Account</a>
-        </nav>
         </nav>
     </header>
     <!-- END OF HEADER -->
@@ -53,47 +47,67 @@
         <div class="location" id="home">
             <h1 id="home">EDITAR</h1>
             <div id="divEdit">
-                <img id="imgEdit"
-                     src="https://store-images.s-microsoft.com/image/apps.30459.13817182746640445.1152921504738442637.a405c13b-cd2b-4d17-8184-4957c880e4ee?mode=scale&q=100&h=310&w=200&background=%23FFFFFF"
-                     alt="">
+                <h2><label id="nomeJogo">{{ jName }}</label></h2>
+                <img id="imgEdit" src="{{ jImg }}" alt=""
+                     style="max-height: 410px; min-height: 410px;max-width: 610px; min-width: 610px;">
                 <div class="form-group" style="width: 200px">
-                    <input id="editNota" type="text" placeholder="Atribua nota" class="form-control input-md">
-                    <button id="btnEdit" type="button" >Editar</button>
+                    <form method="post" action="{{ url_for('editarJogo') }}">
+                        <input type="hidden" name="nomeJogo" value="{{ jName }}">
+                        <div class="adc-pesquisa">
+                            <select name="notaJogo" class="form-select" aria-label="Default select example"
+                                    style="width: 210px; background: #333;border-radius: 2px;margin-top: 10px;
+                        border: none;opacity: 1;color: #fff;line-height: 25px; width: 80px; height: 40px">
+                                <option selected>Nota</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+
+                            <button id="btnEdit" type="submit" style="width: 80px;">Editar
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
         </div>
-</div>
 
-</section>
-<!-- END OF MAIN CONTAINER -->
+    </section>
+    <!-- END OF MAIN CONTAINER -->
 
-<!-- LINKS -->
-<section class="link">
-    <div class="logos">
-        <a href="#"><i class="fab fa-facebook-square fa-2x logo"></i></a>
-        <a href="#"><i class="fab fa-instagram fa-2x logo"></i></a>
-        <a href="#"><i class="fab fa-twitter fa-2x logo"></i></a>
-        <a href="#"><i class="fab fa-youtube fa-2x logo"></i></a>
-    </div>
-    <div class="sub-links">
-        <ul>
-            <li><a href="#">Audio and Subtitles</a></li>
-            <li><a href="#">Audio Description</a></li>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Gift Cards</a></li>
-            <li><a href="#">Media Center</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Legal Notices</a></li>
-            <li><a href="#">Corporate Information</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </div>
-</section>
-<!-- END OF LINKS -->
+    <!-- LINKS -->
+    <section class="link">
+        <div class="logos">
+            <a href="#"><i class="fab fa-facebook-square fa-2x logo"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-2x logo"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-2x logo"></i></a>
+            <a href="#"><i class="fab fa-youtube fa-2x logo"></i></a>
+        </div>
+        <div class="sub-links">
+            <ul>
+                <li><a href="#">Audio and Subtitles</a></li>
+                <li><a href="#">Audio Description</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Gift Cards</a></li>
+                <li><a href="#">Media Center</a></li>
+                <li><a href="#">Investor Relations</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Corporate Information</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- END OF LINKS -->
 </div>
 </body>
 </html>
