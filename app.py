@@ -33,6 +33,7 @@ jogo4 = Jogo('ARK: Survival Evolved', 'https://media.rawg.io/media/games/58a/58a
              '10')
 
 ListJogo = [jogo1, jogo2, jogo3, jogo4]
+ListJogosIndex = []
 
 @app.route('/')
 def login():  # put application's code here
@@ -61,6 +62,8 @@ def addJogo():
     data = requestapi.json()
     img_jogo = data['results'][0]['background_image']
     name_jogo = data['results'][0]['name']
+    if nota_jogo == 'Nota':
+        nota_jogo = 'Jogo Sem Nota'
 
     jogoEncontrado = Jogo(name_jogo, img_jogo, nota_jogo)
     ListJogo.append(jogoEncontrado)
@@ -70,6 +73,7 @@ def addJogo():
 @app.route('/index')
 def index():  # put application's code here
     datajson = requestapi.json()['results']
+
     return render_template("index.html", datajson=datajson, ListJogo=ListJogo)
 
 
