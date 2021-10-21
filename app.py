@@ -34,7 +34,6 @@ jogo4 = Jogo('ARK: Survival Evolved', 'https://media.rawg.io/media/games/58a/58a
 
 ListJogo = [jogo1, jogo2, jogo3, jogo4]
 
-
 @app.route('/')
 def login():  # put application's code here
     return render_template("login.html")
@@ -88,9 +87,17 @@ def editarJogo():  # put application's code here
     nota_jogo = request.form['notaJogo']
     for jogo in ListJogo:
         if (name_jogo == jogo.nomeJogo):
-            jogo.notaJogo = nota_jogo
-            flash('Editado com sucesso!')
-            return redirect('/index')
+            if not nota_jogo == 'Nota':
+                jogo.notaJogo = nota_jogo
+                flash('Editado com sucesso!')
+    return redirect('/index')
+
+@app.route('/deletar/<string:name>')
+def deletar(name):
+    for jogo in ListJogo:
+        if jogo.nomeJogo == name:
+            ListJogo.remove(jogo)
+    return redirect('/index')
 
 
 @app.route('/adicionar')
